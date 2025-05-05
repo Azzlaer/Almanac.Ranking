@@ -1,53 +1,52 @@
 body {
-    font-family: 'Verdana', sans-serif;
-    background-color: #1a1a1a;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #1e1e1e;
     color: #f2f2f2;
     margin: 0;
     padding: 0;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
-    text-align: center;
     padding: 20px;
-    border-radius: 10px;
-    background: linear-gradient(145deg, #232323, #1c1c1c);
-    box-shadow: 5px 5px 15px #000, -5px -5px 15px #2a2a2a;
+    background: linear-gradient(to bottom right, #2e2e2e, #1a1a1a);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
 }
 
 h1 {
-    color: #d4af37; /* Dorado inspirado en Valheim */
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px #000;
+    font-size: 2.2em;
+    color: #d4af37;
+    text-shadow: 1px 1px 3px #000;
+    margin-bottom: 30px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 0 auto;
+    background-color: #292929;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 thead {
-    background-color: #333;
-    color: #d4af37; /* Dorado */
+    background-color: #3a3a3a;
 }
 
 th, td {
-    padding: 10px;
+    padding: 14px;
     text-align: center;
-    border: 1px solid #444;
-}
-
-th {
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
+    border-bottom: 1px solid #444;
 }
 
 th a {
-    color: inherit;
+    color: #d4af37;
     text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 th a:hover {
@@ -55,17 +54,15 @@ th a:hover {
 }
 
 tbody tr:nth-child(even) {
-    background-color: #2a2a2a;
-}
-
-tbody tr:nth-child(odd) {
-    background-color: #1e1e1e;
+    background-color: #262626;
 }
 
 tbody tr:hover {
-    background-color: #444;
+    background-color: #3c3c3c;
 }
 
-td {
-    color: #f2f2f2;
+.footer {
+    margin-top: 20px;
+    color: #888;
+    font-size: 0.9em;
 }

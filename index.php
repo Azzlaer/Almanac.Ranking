@@ -1,9 +1,8 @@
 <?php
-// Leer el archivo YAML
+// Leer y parsear YAML manualmente
 $yamlFile = 'Z:\Servidores\Valheim\12\BepInEx\config\Almanac\Players\PlayerListData.yml';
 $yamlContent = file_get_contents($yamlFile);
 
-// Parsear el YAML manualmente
 $data = [];
 foreach (explode("\n", $yamlContent) as $line) {
     $line = trim($line);
@@ -18,59 +17,55 @@ foreach (explode("\n", $yamlContent) as $line) {
     }
 }
 
-// Función para ordenar el arreglo
+// Ordenamiento
 function sortTable($array, $key, $order) {
     usort($array, function ($a, $b) use ($key, $order) {
-        if ($a[$key] == $b[$key]) return 0;
-        return ($order === 'ASC') ? ($a[$key] <=> $b[$key]) : ($b[$key] <=> $a[$key]);
+        return $order === 'ASC' ? ($a[$key] <=> $b[$key]) : ($b[$key] <=> $a[$key]);
     });
     return $array;
 }
 
-// Obtener parámetros de ordenamiento
 $sortKey = $_GET['sort'] ?? 'completed_achievements';
 $order = $_GET['order'] ?? 'DESC';
+$nextOrder = $order === 'ASC' ? 'DESC' : 'ASC';
 
-// Transformar los datos
 $players = [];
 foreach ($data as $name => $stats) {
     $players[] = array_merge(['name' => $name], $stats);
 }
-
-// Ordenar los datos
 $players = sortTable($players, $sortKey, $order);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valheim Player Ranking</title>
+    <title>🏆 Ranking de Valheim</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Valheim Player Ranking</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th><a href="?sort=name&order=<?= $order === 'ASC' ? 'DESC' : 'ASC' ?>">NOMBRE</a></th>
-                    <th><a href="?sort=completed_achievements&order=<?= $order === 'ASC' ? 'DESC' : 'ASC' ?>">LOGROS</a></th>
-                    <th><a href="?sort=total_kills&order=<?= $order === 'ASC' ? 'DESC' : 'ASC' ?>">MONSTERS</a></th>
-                    <th><a href="?sort=total_deaths&order=<?= $order === 'ASC' ? 'DESC' : 'ASC' ?>">MUERTES</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($players as $player): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($player['name']) ?></td>
-                        <td><?= $player['completed_achievements'] ?></td>
-                        <td><?= $player['total_kills'] ?></td>
-                        <td><?= $player['total_deaths'] ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
+<div class="container">
+    <h1>🏹 Ranking de Jugadores - Valheim</h1>
+    <table>
+        <thead>
+        <tr>
+            <th><a href="?sort=name&order=<?= $nextOrder ?>">🧝 Nombre <?= $sortKey === 'name' ? ($order === 'ASC' ? '🔼' : '🔽') : '' ?></a></th>
+            <th><a href="?sort=completed_achievements&order=<?= $nextOrder ?>">🎖️ Logros <?= $sortKey === 'completed_achievements' ? ($order === 'ASC' ? '🔼' : '🔽') : '' ?></a></th>
+            <th><a href="?sort=total_kills&order=<?= $nextOrder ?>">⚔️ Asesinatos <?= $sortKey === 'total_kills' ? ($order === 'ASC' ? '🔼' : '🔽') : '' ?></a></th>
+            <th><a href="?sort=total_deaths&order=<?= $nextOrder ?>">💀 Muertes <?= $sortKey === 'total_deaths' ? ($order === 'ASC' ? '🔼' : '🔽') : '' ?></a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($players as $player): ?>
+            <tr>
+                <td><?= htmlspecialchars($player['name']) ?></td>
+                <td><?= $player['completed_achievements'] ?></td>
+                <td><?= $player['total_kills'] ?></td>
+                <td><?= $player['total_deaths'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+    <p class="footer">Actualizado automáticamente - Valheim Stats 🛡️</p>
+</div>
 </body>
 </html>
