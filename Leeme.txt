@@ -1,0 +1,8 @@
+Configurar el archivo: index.php
+$yamlFile = 'Z:\Servidores\Valheim\12\BepInEx\config\Almanac\Players\PlayerListData.yml';
+
+Debes poner en donde esta alojado ese archivo PlayerListData.yml
+
+Gracias a ChatGPT por el uso del codigo.
+Puedes mejorarlo y añadirle mejoras pero 
+creo que lo dejare asi para que cada uno lo pueda customizar.

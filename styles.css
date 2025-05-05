@@ -1,0 +1,71 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: linear-gradient(145deg, #232323, #1c1c1c);
+    box-shadow: 5px 5px 15px #000, -5px -5px 15px #2a2a2a;
+}
+
+h1 {
+    color: #d4af37; /* Dorado inspirado en Valheim */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+thead {
+    background-color: #333;
+    color: #d4af37; /* Dorado */
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #444;
+}
+
+th {
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+th a {
+    color: inherit;
+    text-decoration: none;
+}
+
+th a:hover {
+    text-decoration: underline;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+}
+
+tbody tr:hover {
+    background-color: #444;
+}
+
+td {
+    color: #f2f2f2;
+}
